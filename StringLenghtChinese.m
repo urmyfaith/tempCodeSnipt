@@ -12,15 +12,19 @@
 	return [da length];
 }
 
+//下面的方法有问题
 - (NSInteger)stringLengthContainChinese
 {
 	NSInteger  strlength = 0;
 	char* p = (char*)[self cStringUsingEncoding:NSUnicodeStringEncoding];
 	for (NSInteger i=0 ; i<[self lengthOfBytesUsingEncoding:NSUnicodeStringEncoding] ;i++) {
+		printf("%c",*p);
 		if (*p) {
+			p++;
 			strlength++;
+		}else{
+			p++;
 		}
-		p++;
 	}
 	return strlength;
 }
@@ -31,10 +35,9 @@
 
 int main(int argc, char *argv[]) {
 	@autoreleasepool {
-		NSString *str = @"abc中国";
+		NSString *str = @"一二三四五六七八a";
 		
-		NSLog(@"%zd",[str stringInclodeChineseLength]);	//output:7
-		
-		NSLog(@"%zd",[str stringLengthContainChinese]);	//output:7
+		NSLog(@"%zd",[str stringInclodeChineseLength]);	//output:17 		
+		NSLog(@"%zd",[str stringLengthContainChinese]);	//output:16
 	}
 }
