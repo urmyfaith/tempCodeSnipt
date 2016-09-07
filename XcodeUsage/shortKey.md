@@ -15,3 +15,4 @@ command＋option ＋ 向左按键
 ```
 command＋option ＋ 向右按键
 ```
+
